@@ -1,0 +1,264 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+/* Metrics Row */
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.metricCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metricHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.metricValue {
+  font-family: 'Outfit', sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.metricSub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.cyanBadge, .indigoBadge, .emeraldBadge {
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 6px;
+  border-radius: var(--border-radius-sm);
+}
+
+.cyanBadge { background: rgba(6, 182, 212, 0.1); color: var(--accent-cyan); }
+.indigoBadge { background: rgba(99, 102, 241, 0.1); color: var(--accent-indigo); }
+.emeraldBadge { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+
+/* Grid Dashboard */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.dashboardCard {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.cardHeader h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.cardLink {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+}
+
+.cardLink:hover {
+  text-decoration: underline;
+}
+
+.cardBodyList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.listItem {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-smooth);
+}
+
+.listItem:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--border-color-hover);
+}
+
+.listMain {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.listCompanyRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.companyName {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+}
+
+.fitBadge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  border-radius: var(--border-radius-sm);
+}
+
+.fit_A { background: rgba(16, 185, 129, 0.1); color: var(--accent-emerald); }
+.fit_B { background: rgba(99, 102, 241, 0.1); color: var(--accent-indigo); }
+
+.itemTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.itemReason {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Interview specific columns */
+.interviewTimeCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 16px;
+  border-right: 1px solid var(--border-color);
+  min-width: 70px;
+}
+
+.timeBadge {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--accent-cyan);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  text-align: center;
+}
+
+.timeSub {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.interviewMainCol {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.interviewComp {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--accent-indigo);
+  text-transform: uppercase;
+}
+
+.interviewTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.interviewRound {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.emptyCardState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  border: 1px dashed var(--border-color);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 60px;
+  color: var(--text-secondary);
+}
+
+.spinner {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(6, 182, 212, 0.2);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

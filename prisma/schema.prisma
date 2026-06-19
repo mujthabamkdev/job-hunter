@@ -1,0 +1,95 @@
+datasource db {
+  provider = "sqlite" // To deploy on free cloud tier (Supabase/Neon), change to "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model UserProfile {
+  id          String   @id @default(uuid())
+  name        String
+  email       String
+  phone       String?
+  bio         String?
+  skills      String   // Comma-separated or JSON string
+  targetRoles String   // Comma-separated or JSON string
+  experience  String?  // Markdown or text overview of past roles
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Job {
+  id          String       @id @default(uuid())
+  title       String
+  company     String
+  location    String?
+  salary      String?
+  url         String       @unique
+  description String
+  fitScore    String?      // AI-generated score, e.g. "A", "B", "C", "F"
+  fitReason   String?      // AI-generated reasoning for the score
+  status      String       // "DISCOVERED", "SKIPPED", "APPLIED"
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  application Application?
+}
+
+model Application {
+  id                  String      @id @default(uuid())
+  jobId               String      @unique
+  job                 Job         @relation(fields: [jobId], references: [id], onDelete: Cascade)
+  status              String      // "WISHLIST", "APPLIED", "INTERVIEWING", "OFFERED", "REJECTED"
+  dateApplied         DateTime?
+  notes               String?
+  tailoredResumeUrl   String?     // Local path or cloud URL
+  tailoredCoverLetter String?     // Generated cover letter content
+  createdAt           DateTime    @default(now())
+  updatedAt           DateTime    @updatedAt
+  interviews          Interview[]
+}
+
+model Interview {
+  id             String      @id @default(uuid())
+  applicationId  String
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  round          String      // e.g., "Intro Screen", "Technical Interview", "ML System Design"
+  scheduledAt    DateTime
+  notes          String?
+  prepMaterial   String?     // AI-generated study plan, cheat sheets, and custom questions
+  responseReview String?     // Post-interview response analysis and suggestions
+  status         String      // "SCHEDULED", "COMPLETED", "CANCELLED"
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model Project {
+  id          String   @id @default(uuid())
+  name        String
+  description String?
+  url         String?      // GitHub repository URL
+  techStack   String   // Comma-separated skills used
+  aiAnalysis  String?  // AI recommendations and code-quality analysis
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Contact {
+  id          String   @id @default(uuid())
+  name        String
+  company     String?
+  title       String?  // Recruiter, Hiring Manager, Tech Lead, etc.
+  email       String?
+  linkedinUrl String?
+  outreachLog String?  // Logs of message exchanges / history
+  status      String   // "NOT_CONTACTED", "MESSAGED", "RESPONDED", "REJECTED"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Settings {
+  id    String @id @default(uuid())
+  key   String @unique
+  value String
+}

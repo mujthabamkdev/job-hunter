@@ -1,0 +1,122 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+}
+
+.refreshBtn {
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 12px 24px;
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.refreshBtn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--border-color-hover);
+}
+
+/* Loader */
+.loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.pulseSpinner {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-indigo));
+  animation: pulse-scale 1.5s infinite ease-in-out;
+  box-shadow: var(--glow-cyan);
+}
+
+@keyframes pulse-scale {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(0.8); opacity: 0.5; }
+}
+
+/* Roadmap Card */
+.roadmapCard {
+  padding: 30px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accent-cyan), rgba(6, 182, 212, 0.2));
+  color: var(--accent-cyan);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: var(--border-radius-sm);
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.markdownContent {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #c8d3e6;
+  white-space: pre-wrap;
+}
+
+/* Make lists inside markdown bold or padded */
+.markdownContent h2 {
+  font-family: 'Outfit', sans-serif;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 8px;
+}
+
+.markdownContent h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.markdownContent ul {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.markdownContent li {
+  margin-bottom: 4px;
+}
