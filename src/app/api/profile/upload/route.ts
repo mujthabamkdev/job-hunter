@@ -1,10 +1,21 @@
 import { NextResponse } from 'next/server';
 import { prisma } from '@/lib/db';
 
-// Polyfill DOMMatrix for Node.js environment to prevent pdf-parse/pdf.js ReferenceErrors
-if (typeof global.DOMMatrix === 'undefined') {
-  (global as any).DOMMatrix = class DOMMatrix {};
-}
+// Polyfill DOMMatrix, ImageData, and other browser globals for Node.js environment to prevent pdf-parse/pdf.js ReferenceErrors
+const polyfillGlobals = () => {
+  const dummyClass = class {};
+  const globalsToPolyfill = ['DOMMatrix', 'DOMMatrixReadOnly', 'ImageData', 'Path2D'];
+  
+  globalsToPolyfill.forEach((name) => {
+    if (typeof (globalThis as any)[name] === 'undefined') {
+      (globalThis as any)[name] = dummyClass;
+    }
+    if (typeof (global as any)[name] === 'undefined') {
+      (global as any)[name] = dummyClass;
+    }
+  });
+};
+polyfillGlobals();
 
 export async function POST(request: Request) {
   try {
